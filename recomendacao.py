@@ -67,7 +67,6 @@ def distancia_euclidiana(user1, user2):
     return 1/(1+sqrt(soma))
 
 ##Função que retorna a similaridade entre usuário
-
 def getSimilares(user):
     similaridade = [(distancia_euclidiana(user, outro), outro)
                     for outro in avaliacoes if outro != user]
@@ -75,8 +74,33 @@ def getSimilares(user):
     similaridade.reverse()
     return similaridade
 
+##Função de recomendação
+def getRecomendacoes(user):
+    totais={}
+    somaSimilaridades={}
 
+    for outro in avaliacoes:
+        if outro == user:
+            continue
+        similaridade = distancia_euclidiana(user,outro)
+        
+        if similaridade <= 0:
+            continue
+        
+        ##Percorre os filmes que o outro usuário
+        for item in avaliacoes[outro]:
+            ##Verifica se o filme não foi assistido pelo usuário
+            if item not in avaliacoes[user]:
+                ##Inicializa. Key: item, valor: 0
+                totais.setdefault(item,0)
+                totais[item] += avaliacoes[outro][item] * similaridade
+                somaSimilaridades.setdefault(item,0)
+                somaSimilaridades[item] += similaridade
 
+    rankings=[(total / somaSimilaridades[item], item) for item, total in totais.items()]
+    rankings.sort()
+    rankings.reverse()
+    return rankings
 
 
 
