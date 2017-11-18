@@ -1,7 +1,7 @@
 ##Base da dados
 from math import sqrt
 
-avaliacoesUsuario = {'Ana': 
+'''avaliacoes = {'Ana': 
 		{'Freddy x Jason': 2.5, 
 		 'O Ultimato Bourne': 3.5,
 		 'Star Trek': 3.0, 
@@ -49,10 +49,10 @@ avaliacoesUsuario = {'Ana':
 	    {'O Ultimato Bourne':4.5,
              'Norbit':1.0,
 	     'Exterminador do Futuro':4.0}
-}
+}'''
 
 ##Base de dados invertida
-avaliacoesFilme = {'Freddy x Jason': 
+avaliacoes = {'Freddy x Jason': 
 		{'Ana': 2.5, 
 		 'Marcos:': 3.0 ,
 		 'Pedro': 2.5, 
