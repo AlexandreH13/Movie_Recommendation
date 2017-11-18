@@ -68,7 +68,12 @@ def distancia_euclidiana(user1, user2):
 
 ##Função que retorna a similaridade entre usuário
 
-
+def getSimilares(user):
+    similaridade = [(distancia_euclidiana(user, outro), outro)
+                    for outro in avaliacoes if outro != user]
+    similaridade.sort()
+    similaridade.reverse()
+    return similaridade
 
 
 
